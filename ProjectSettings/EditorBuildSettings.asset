@@ -5,7 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/ErikTest.unity
+    guid: 2657dd69040fec84a9cce88043fda2ed
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: fa2a450d90c28f3499da58a70ee22e84,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2b288e2c1088eaf4caf903322bd61146,
+      type: 2}
