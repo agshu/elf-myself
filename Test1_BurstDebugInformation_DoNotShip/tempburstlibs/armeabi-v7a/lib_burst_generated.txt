@@ -173,6 +173,7 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Burst.dll
+--root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\ReadyPlayerMe.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
@@ -187,7 +188,6 @@ Library: lib_burst_generated
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\WebView.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.XR.Management.dll
---root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
 --root-assembly=C:\Users\rosta\Documents\GitHub\elf-myself\Temp\StagingArea\Data\Managed\UnityEngine.XR.LegacyInputHelpers.dll
