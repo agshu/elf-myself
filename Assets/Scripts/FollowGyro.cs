@@ -9,12 +9,36 @@ public class FollowGyro : MonoBehaviour
 
     private void Start()
     {
-        GyroManager.Instance.EnableGyro();
+        //GyroManager.Instance.EnableGyro();
+        Input.gyro.enabled = true;
     }
 
 
     private void Update()
     {
-        transform.localRotation = GyroManager.Instance.GetGyroRotation() * baseRotation;
+        //Vector3 cameraRot = transform.eulerAngles;
+
+        //cameraRot.y += (GyroManager.Instance.GetGyroRotation() * baseRotation).y;
+
+        //transform.localRotation = Quaternion.Euler(cameraRot);
+
+        // First try
+        //transform.localRotation = GyroManager.Instance.GetGyroRotation() * baseRotation;
+
+        Quaternion referenceRot = Quaternion.identity;
+        Quaternion deviceRot = DeviceRotation.Get();
+        Quaternion eliminationOfXY = Quaternion.Inverse(
+            Quaternion.FromToRotation(referenceRot * Vector3.up, deviceRot * Vector3.up)
+        );
+
+        Quaternion yRot = eliminationOfXY * deviceRot;
+        float yaw = yRot.eulerAngles.y;
+
+        Vector3 cameraRot = transform.eulerAngles;
+        transform.localRotation = Quaternion.Euler(cameraRot.x, yaw, cameraRot.z);
+
+        Debug.Log("yaw: " + yaw);
+
+        
     }
 }
