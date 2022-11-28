@@ -25,19 +25,23 @@ public class FollowGyro : MonoBehaviour
         // First try
         //transform.localRotation = GyroManager.Instance.GetGyroRotation() * baseRotation;
 
+        // Get device rotation, eliminate rotation around x and z axes
         Quaternion referenceRot = Quaternion.identity;
         Quaternion deviceRot = DeviceRotation.Get();
-        Quaternion eliminationOfXY = Quaternion.Inverse(
+        Quaternion eliminationOfXZ = Quaternion.Inverse(
             Quaternion.FromToRotation(referenceRot * Vector3.up, deviceRot * Vector3.up)
         );
 
-        Quaternion yRot = eliminationOfXY * deviceRot;
+        // Yaw rotation
+        Quaternion yRot = eliminationOfXZ * deviceRot;
         float yaw = yRot.eulerAngles.y;
+        float cameraRotY = transform.localRotation.eulerAngles.y;
+        Debug.Log("yaw: " + yaw + "; camera y rot: " + cameraRotY);
 
+        // Transform cameras rotation to that of phone, with offset since Unity have left handed coordinates whilst the phone is right handed?
         Vector3 cameraRot = transform.eulerAngles;
-        transform.localRotation = Quaternion.Euler(cameraRot.x, yaw, cameraRot.z);
+        transform.localRotation = Quaternion.Euler(cameraRot.x, (-90 + yaw), cameraRot.z);
 
-        Debug.Log("yaw: " + yaw);
 
         
     }
