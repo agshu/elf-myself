@@ -864,7 +864,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     Android: READY_PLAYER_ME;NORMCORE
-    Standalone: READY_PLAYER_ME
+    Standalone: READY_PLAYER_ME;NORMCORE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
