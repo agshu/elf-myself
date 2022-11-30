@@ -18,8 +18,6 @@ public class GrabRequest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (xRGrabInteractable.isSelected) {
             realtimeTransform.RequestOwnership();
-        }
     }
 }
