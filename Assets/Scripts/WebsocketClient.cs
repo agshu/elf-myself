@@ -15,20 +15,26 @@ public class WebsocketClient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ws = new WebSocket("ws://localhost:8080");
+        ws = new WebSocket("ws://elfmyselfvr.herokuapp.com/");
+
         ws.Connect();
 
-        if (ws == null)
+        ws.OnOpen += (sender, e) =>
         {
-            Debug.Log("No connection!");
-            return;
-        }
+            Debug.Log("Connection open");
+        };
 
-            ws.OnMessage += (sender, e) =>
+        ws.OnMessage += (sender, e) =>
         {
             Debug.Log("Message received from " + ((WebSocket)sender).Url + ", Data: " + e.Data);
             incoming_messages.Enqueue(e.Data);
         };
+
+        ws.OnError += (sender, e) =>
+        {
+            Debug.Log("Error: " + e);
+        };
+
     }
 
     // Update is called once per frame
