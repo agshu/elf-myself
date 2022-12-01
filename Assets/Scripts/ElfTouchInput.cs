@@ -25,6 +25,7 @@ public class ElfTouchInput : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            Debug.Log("hej");
             windowKnockSource.Play();
             
         }
