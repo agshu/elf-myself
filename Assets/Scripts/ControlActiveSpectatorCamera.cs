@@ -10,14 +10,18 @@ public class ControlActiveSpectatorCamera : MonoBehaviour
     public int pixelDistanceToSwipe = 200;
     private bool fingerDown;
 
-    public GameObject ElfCam1;
-    public GameObject ElfCam2;
+    public GameObject[] ElfCams;
+
+    private int currentCamIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        ElfCam1.SetActive(true);
-        ElfCam2.SetActive(false);
+        ChangeActiveCamera(currentCamIndex);
+        //ElfCam1.SetActive(true);
+        //ElfCam2.SetActive(false);
+        //ElfCam3.SetActive(false);
+        //ElfCam4.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,15 +44,37 @@ public class ControlActiveSpectatorCamera : MonoBehaviour
             else if (Input.touches[0].position.x <= startPos.x - pixelDistanceToSwipe)
             {
                 fingerDown = false;
-                ElfCam1.SetActive(false);
-                ElfCam2.SetActive(true);
+                //ElfCam1.SetActive(false);
+                //ElfCam2.SetActive(true);
+
+                if(currentCamIndex - 1 < 0)
+                {
+                    currentCamIndex = 3;
+                    ChangeActiveCamera(currentCamIndex);
+                }
+                else
+                {
+                    currentCamIndex = currentCamIndex - 1;
+                    ChangeActiveCamera(currentCamIndex);
+                }
                 UnityEngine.Debug.Log("Swipe left");
             }
             else if (Input.touches[0].position.x >= startPos.x + pixelDistanceToSwipe)
             {
                 fingerDown = false;
-                ElfCam1.SetActive(true);
-                ElfCam2.SetActive(false);
+
+                if (currentCamIndex + 1 > 3)
+                {
+                    currentCamIndex = 0;
+                    ChangeActiveCamera(currentCamIndex);
+                }
+                else
+                {
+                    currentCamIndex = currentCamIndex + 1;
+                    ChangeActiveCamera(currentCamIndex);
+                }
+                //ElfCam1.SetActive(true);
+                //ElfCam2.SetActive(false);
                 UnityEngine.Debug.Log("Swipe right");
             }
         }
@@ -57,5 +83,17 @@ public class ControlActiveSpectatorCamera : MonoBehaviour
         {
             fingerDown = false;
         }
+    }
+
+    void ChangeActiveCamera(int newCamIndex)
+    {
+        for (int i = 0; i < ElfCams.Length; i++)
+        {
+            if (i != newCamIndex)
+            {
+                ElfCams[i].SetActive(false);
+            }
+        }
+        ElfCams[newCamIndex].SetActive(true);
     }
 }
