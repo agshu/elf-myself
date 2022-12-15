@@ -8,32 +8,34 @@ public class AttachToTree : MonoBehaviour
     public GameObject tree;
     private Collider treeCollider;
     private Vector3 closestPoint;
+    private int boolean = 0;
     
     // Start is called before the first frame update
     void Start()
     {
-
+       // var boolean = false;
         rb = GetComponent<Rigidbody>();
         treeCollider = tree.GetComponent<Collider>();
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Tree"))
         {
-            rb.isKinematic = true;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            boolean = 1;
+            //rb.isKinematic = true;
+            //rb.constraints = RigidbodyConstraints.FreezeAll;
             //rb.useGravity = false;
             //rb.isKinematic = true;
+        } else {
+            boolean = 0;
         }
-        else if (other.gameObject.CompareTag("Hands"))  {
+        /*else if (other.gameObject.CompareTag("Hands"))  {
             rb.isKinematic = false;
             rb.constraints = RigidbodyConstraints.None;
             //rb.useGravity = true;
             //rb.isKinematic = false;
-        }
-
-    }
+        }*/
 
     // Update is called once per frame
     void Update()
@@ -47,7 +49,7 @@ public class AttachToTree : MonoBehaviour
             //when dropped => kolla om distans < 0.1. om ja => stäng av gravitation och placera på closestPoint
             // om inte <0.1 ha kvar gravity
 
-            /*if (distance < 0.001) {
+            if (distance < 0.0001) {
                 rb.transform.position = closestPoint;
                 rb.useGravity = false;
                 rb.isKinematic = true;
@@ -55,10 +57,10 @@ public class AttachToTree : MonoBehaviour
                 //rb.constraints.FreezePosition = true;
                 //rb.constraints = RigidbodyConstraints.FreezePosition;
             } else {
-                    rb.useGravity = true;
-                    rb.isKinematic = false;
-                    //rb.constraints = RigidbodyConstraints.None;
-            }*/
+                rb.useGravity = true;
+                rb.isKinematic = false;
+                //rb.constraints = RigidbodyConstraints.None;
+            }
         }
     }
 }

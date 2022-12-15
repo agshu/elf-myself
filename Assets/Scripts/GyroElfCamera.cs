@@ -37,6 +37,7 @@ public class GyroElfCamera : MonoBehaviour
         ApplyCalibration();
 
         transform.rotation = Quaternion.Slerp(transform.rotation, _rawGyroRotation.rotation, _smoothing);
+
     }
 
     private IEnumerator CalibrateYAngle()
