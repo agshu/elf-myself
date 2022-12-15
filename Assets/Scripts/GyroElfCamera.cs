@@ -13,6 +13,8 @@ public class GyroElfCamera : MonoBehaviour
     // SETTINGS
     [SerializeField] private float _smoothing = 0.1f;
 
+    [SerializeField] private float _yRotOffset = 180f;
+
     private IEnumerator Start()
     {
         Input.gyro.enabled = true;
@@ -50,7 +52,7 @@ public class GyroElfCamera : MonoBehaviour
     {
         _rawGyroRotation.rotation = Input.gyro.attitude;
         _rawGyroRotation.Rotate(0f, 0f, 180f, Space.Self); // Swap "handedness" of quaternion from gyro.
-        _rawGyroRotation.Rotate(90f, 180f, 0f, Space.World); // Rotate to make sense as a camera pointing out the back of your device.
+        _rawGyroRotation.Rotate(90f, _yRotOffset, 0f, Space.World); // Rotate to make sense as a camera pointing out the back of your device.
         _appliedGyroYAngle = _rawGyroRotation.eulerAngles.y; // Save the angle around y axis for use in calibration.
     }
 
