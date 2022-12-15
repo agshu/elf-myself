@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GyroElfCamera : MonoBehaviour
+public class ElfHeadRot : MonoBehaviour
 {
     // STATE
     private float _initialYAngle = 0f;
@@ -14,6 +14,8 @@ public class GyroElfCamera : MonoBehaviour
     [SerializeField] private float _smoothing = 0.1f;
 
     [SerializeField] private float _yRotOffset = 180f;
+
+    [SerializeField] private GameObject Elf;
 
     private IEnumerator Start()
     {
@@ -37,7 +39,8 @@ public class GyroElfCamera : MonoBehaviour
         ApplyCalibration();
 
         transform.rotation = Quaternion.Slerp(transform.rotation, _rawGyroRotation.rotation, _smoothing);
-
+        
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
     }
 
     private IEnumerator CalibrateYAngle()

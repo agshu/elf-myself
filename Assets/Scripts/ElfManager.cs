@@ -13,6 +13,7 @@ public class ElfManager : MonoBehaviour
     // Variables related to spectator cameras
     public GameObject[] ElfCams;
     private int currentCamIndex = 0;
+    public GameObject[] Elfs;
 
     // Variables related to windows and knocking sounds
     public GameObject[] Windows;
@@ -84,12 +85,16 @@ public class ElfManager : MonoBehaviour
         {
             if (i != newCamIndex)
             {
-                ElfCams[i].GetComponent<AudioListener>().enabled = false;
+                ElfCams[i].GetComponentInChildren<AudioListener>().enabled = false;
                 ElfCams[i].SetActive(false);
+
+                Elfs[i].SetActive(false);
             }
         }
         ElfCams[newCamIndex].SetActive(true);
-        ElfCams[newCamIndex].GetComponent<AudioListener>().enabled = true;
+        ElfCams[newCamIndex].GetComponentInChildren<AudioListener>().enabled = true;
+
+        Elfs[newCamIndex].SetActive(true);
     }
 
     void KnockOnWindow(int windowIndex)
