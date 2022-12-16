@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ElfManager : MonoBehaviour
@@ -83,18 +83,27 @@ public class ElfManager : MonoBehaviour
     {
         for (int i = 0; i < ElfCams.Length; i++)
         {
+            Debug.Log("Detta är newcamindex: " + newCamIndex);
             if (i != newCamIndex)
             {
-                ElfCams[i].GetComponentInChildren<AudioListener>().enabled = false;
-                ElfCams[i].SetActive(false);
+                if (Elfs[i].transform.position.y > 0) {
+                    ElfCams[i].GetComponentInChildren<AudioListener>().enabled = false;
+                    ElfCams[i].SetActive(false);
+                    Debug.Log("i y > 0: " + i);
+                    //Elfs[i].SetActive(false);
+                    Vector3 origPos = Elfs[i].transform.position;
+                    Elfs[i].transform.position = Elfs[i].transform.position + new Vector3(0, -5f , 0);
+                }
 
-                Elfs[i].SetActive(false);
             }
         }
+
         ElfCams[newCamIndex].SetActive(true);
         ElfCams[newCamIndex].GetComponentInChildren<AudioListener>().enabled = true;
-
-        Elfs[newCamIndex].SetActive(true);
+        
+        //Elfs[newCamIndex].SetActive(true);
+        Vector3 origPosBelow = Elfs[newCamIndex].transform.position;
+        Elfs[newCamIndex].transform.position = Elfs[newCamIndex].transform.position + new Vector3(0, 5f, 0);
     }
 
     void KnockOnWindow(int windowIndex)

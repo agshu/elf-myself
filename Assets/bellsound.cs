@@ -8,6 +8,6 @@ public class bellsound : MonoBehaviour
      
          void OnTriggerEnter(Collider other)
          {
-            bellsound.Play();
+            CollectSound.Play();
          }
 }

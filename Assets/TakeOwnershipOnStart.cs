@@ -17,7 +17,9 @@ public class TakeOwnershipOnStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Application.platform == RuntimePlatform.Android) {
+        if (Application.platform == RuntimePlatform.WindowsEditor) {
+            realtimeTransform.RequestOwnership();
+        } else if (Application.platform == RuntimePlatform.WindowsPlayer) {
             realtimeTransform.RequestOwnership();
         }
     }
