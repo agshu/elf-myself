@@ -51,13 +51,15 @@ public class AttachToTree : MonoBehaviour
             // om inte <0.1 ha kvar gravity
             if (distance < 0.0001) {
                 rb.transform.position = closestPoint;
-                //rb.isKinematic = true;
+                //rb.useGravity = true;
+                rb.isKinematic = true;
                 //rb.constraints.FreezeRotation = true;
                 //''rb.constraints.FreezePosition = true;
                 rb.constraints = RigidbodyConstraints.FreezePosition;
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
-            } else {
-                //rb.isKinematic = false;
+            } else if (distance > 0.0001 && distance < 0.8) {
+                rb.isKinematic = false;
+                //rb.useGravity = false;
                 rb.constraints = RigidbodyConstraints.None;
             }
         }

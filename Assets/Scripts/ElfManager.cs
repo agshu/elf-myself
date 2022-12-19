@@ -86,9 +86,9 @@ public class ElfManager : MonoBehaviour
             Debug.Log("Detta är newcamindex: " + newCamIndex);
             if (i != newCamIndex)
             {
+                ElfCams[i].GetComponentInChildren<AudioListener>().enabled = false;
+                ElfCams[i].SetActive(false);
                 if (Elfs[i].transform.position.y > 0) {
-                    ElfCams[i].GetComponentInChildren<AudioListener>().enabled = false;
-                    ElfCams[i].SetActive(false);
                     Debug.Log("i y > 0: " + i);
                     //Elfs[i].SetActive(false);
                     Vector3 origPos = Elfs[i].transform.position;
